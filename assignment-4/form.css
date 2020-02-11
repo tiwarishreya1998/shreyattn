@@ -1,0 +1,124 @@
+header
+{
+    color:#2bb78f;
+    margin-left: 20px;
+    margin-top: 20px;
+    padding-right: 20px;
+}
+.Heading
+{
+    float:left;
+    font-size: 30px;
+}
+.links
+{
+    float: right;
+    display: inline-block;
+    margin-right: 20px;
+    margin-top: 15px;
+}
+hr
+{
+    clear: both;
+    border:0.5px solid #2bb78f;
+    margin-bottom: 40px;
+}
+.form
+{
+    border:0.5px solid lightgray;
+    border-radius: 6px;
+    margin-left: 500px;
+    height: 100%;
+    width:30%;
+    margin-bottom: 0px;
+    background-color: gray;
+}
+
+.upper
+{
+    background-color: gray;
+    height: 50px;
+    width: 100%;
+
+}
+.bug
+{
+    color: white;
+    font-family: "Fira Code";
+    font-size: large;
+    padding-top: 20px;
+    padding-left: 20px;
+
+}
+.middle
+{
+    padding: 5px 10px 5px 10px;
+    background-color: white;
+
+}
+.tt
+{
+    width: 358px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+textarea
+{
+    width: 358px;
+    border-radius: 4px;
+}
+select
+{
+    width: 358px;
+    padding: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #2bb78f;
+    border-radius: 4px;
+    color: white;
+    font-weight: bolder;
+}
+label
+{
+    margin-bottom: 10px;
+    font-size: small;
+}
+option
+{
+    font-weight: bolder;
+}
+.ver
+{
+    width:  180px;
+}
+.r_b
+{
+    width: auto;
+}
+.fr
+{
+    margin-right: 180px;
+}
+.attach
+{
+    border: 1px solid black;
+    width: 358px;
+}
+.footer
+{
+    height: 60px;
+    background-color: lightgray;
+}
+.but
+{
+    float: right;
+    color: white;
+    background-color: #2bb78f;
+    font-family: "Fira Code";
+    font-weight: bolder;
+    font-size: medium;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+
+}

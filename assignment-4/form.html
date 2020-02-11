@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="form.css">
+    <title>FORM</title>
+</head>
+<header>
+    <div class="Heading">TO THE NEW</div>
+    <nav class="links">HOME</nav>
+    <nav class="links">QUICK HELP</nav>
+</header>
+<br>
+
+<hr class="line">
+<form class="form">
+    <div class="upper"><p class="bug"><strong>Bug Report</strong></p></div>
+    <br>
+    <div class="middle">
+        <label>Title:*</label><br>
+        <input type="text" class="tt" required><br>
+        <label>Description:*</label><br>
+        <textarea type=" text" rows="4" required></textarea><br>
+        <label>Operating system:</label><br>
+        <select name="drop_down" >
+            <option value="ms dos">MS Dos</option>
+            <option value="Windows">Windows</option>
+            <option value="Linux">Linux</option>
+        </select><br>
+        <label>Product:*</label><br>
+        <select name="drop_down_2" required>
+            <option value="Formoid">Formoid</option>
+            <option value="Non_Formoid">Non Formoid</option>
+        </select><br>
+        <label>Version:*</label><br>
+        <textarea type="text" rows="3" class="ver" required></textarea><br>
+        <label>Licence:</label><br>
+        <input type="radio"><a class="fr">free</a>
+        <input type="radio">Business
+
+        <br>
+
+        <label>Severity:</label><br>
+        <select name="drop_down3">
+            <option value="critical">Critical</option>
+            <option value="Non_Critical">Non_Critical</option>
+        </select><br>
+        <label>Attachments:</label><br>
+        <input type="file" class="attach">
+    </div>
+    <div class="footer"><button class="but">Send</button></div>
+</form>
+</body>
+</head>
+</html>
