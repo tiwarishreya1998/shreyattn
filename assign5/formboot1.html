@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Form-Bootstrap</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="formboot1.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-brand ttn"  style="color:#1abc9c;">To The New</div>
+
+ <div class="navbar navbar-expand-sm">
+ 	<a href="#">Home</a>	
+ 	<a href="#">Quick Help</a>	
+</div>
+</nav>
+
+
+<div class="container form_wrap">
+
+	<div class="row">
+		<div class="col-md-6 col-sm-10 col-xs-12 form_sec">
+
+
+			<div class="panel panel-default">
+  				<div class="panel-body"><strong>Bug Report</strong></div>
+			</div>
+	<br>
+		<form class="form_input">
+		<div style="padding:20px;">
+  <div class="form-group">
+    <label for="title">Title<sup>*</sup>:</label>
+    <input type="text" class="form-control" id="title"  required>
+  </div>
+  <div class="form-group">
+  <label for="desc">Description<sup>*</sup>:</label>
+  <textarea class="form-control rounded-0" id="desc" rows="5" required></textarea>
+</div>
+
+  <div class="form-group">
+	  <label for="os">Operating System<sup>*</sup>:</label>
+	  <select class="form-control" id="os">
+	    <option>Windows</option>
+	  </select>
+  </div>
+
+ <div class="form-group">
+	  <label for="product">Product<sup>*</sup>:</label>
+	  <select class="form-control" id="product">
+	    <option >Formoid</option>
+	  </select>
+  </div>
+
+    <div class="form-group version_input">
+    <label for="version">Version<sup>*</sup>:</label>
+    <input type="text" class="form-control" id="version"  required>
+  </div>
+
+
+<div class="form-group">
+	<label>License<sup>*</sup>:</label><br>
+	<label class="radio-inline"><input type="radio" name="license" value="free"> &nbsp; Free</label>
+	<label class="radio-inline" style="margin-left:20%;"><input type="radio" name="license" value="business">&nbsp;  Business</label>
+</div>
+
+ <div class="form-group">
+	  <label for="security">Security<sup>*</sup>:</label>
+	  <select class="form-control" id="product">
+	    <option>Critical</option>
+	  </select>
+  </div>
+
+<div class="form-group">
+  <div class="custom-file">
+    <input type="file" class="custom-file-input" id="inputGroupFile01"
+      aria-describedby="inputGroupFileAddon01">
+    <label class="custom-file-label" for="inputGroupFile01">Upload Files</label>
+  </div>
+</div>
+
+</div>
+
+<div style="background: #ddd;width: 100%;height:70px;padding-top:20px;padding-right:20px;">
+	<div class="form-group">
+		<input type="submit" class="btn btn-primary float-right" value="Send" style="background:#1abc9c;border:none;padding:7px 30px;font-size:1.1em;" /> 
+	</div>
+</div>
+
+
+
+
+  			
+</form>
+</div>
+	</div>
+</div>
+
+
+
+</body>
+</html>
