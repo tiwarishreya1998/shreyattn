@@ -1,0 +1,62 @@
+<html>
+	<head>
+		<title>Question 5</title>
+	</head>
+
+	<body>
+		<script>
+			var Person = [{Name:"John",age:22,dob:"9-5-89",salary:17000},
+						 {Name:"ram",age:20,dob:"13-12-93",salary:50},
+						 {Name:"Jonny",age:47,dob:"19-8-97",salary:178},
+						 {Name:"Shyam",age:34,dob:"12-4-96",salary:175500}];
+
+						 
+						 document.write("<br>part 1");
+
+						 for(var e in Person){
+			document.write("<br>Name:" + Person[e].Name + " " + "Age : " + Person[e].age + " " + "dob:" + Person[e].dob+ " " + "salary:"+Person[e].salary)};
+
+				document.write("<br> Part 2");
+
+							document.write(JSON.stringify(Person.filter(salary)));
+
+							function salary(b)
+							{
+								if(b.salary>5000){
+									return b;
+								}
+							}
+
+				document.write("<br> Part 3")
+				var agelessthan20=[];
+				var agelessthan30=[];
+				var agegreaterthan30=[];
+				 for(var e in Person)
+				 {
+				 	if(Person[e].age<=20)
+				 	{
+				 		agelessthan20.push(Person[e].Name);
+				 	}
+				 	else if(Person[e].age<=30){
+				 		agelessthan30.push(Person[e].Name);
+				 	}
+				 	else
+				 		agegreaterthan30.push(Person[e].Name);
+				 }
+ 
+				 document.write("<br> age grouped less than 20 are:"+agelessthan20+ " " +"<br>age grouped less than 30:"+agelessthan30+ " " +"<br>age greater than 30"+agegreaterthan30);
+
+				 document.write("<br> Part 4");
+
+				 for(var e in Person){
+				 	if (Person[e].salary>5000 && Person[e].age>=20)
+				 	{
+				 		var c=Person[e].salary;
+				 		c=c*5;
+				 		document.write("<br>the new salari is: "+c+"the old salary was:"+Person[e].salary);
+				 	}
+				 }
+		</script>
+
+	</body>
+</html>
