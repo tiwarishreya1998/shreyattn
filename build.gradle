@@ -1,0 +1,38 @@
+buildscript {
+    dependencies {
+        classpath files("show-date/build/libs/show-date-1.0-SNAPSHOT.jar")
+    }
+}
+plugins {
+    id 'java'
+}
+apply plugin : 'show-date-plugin'
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+jar{
+    manifest{
+        attributes(
+                'Main-Class':'Hello'
+        )
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12' //The dependencies required to compile the test source of the project. By default, it includes compiled production classes and the compile time dependencies.
+    compile 'com.google.code.gson:gson:2.8.0' //The dependencies required to compile the production source of the project.
+    runtime 'com.google.code.gson:gson:2.8.0' //The dependencies required by the production classes at runtime. By default, also includes the compile time dependencies.
+    testRuntime group: 'junit', name: 'junit', version: '4.12' //The dependencies required to run the tests. By default, it includes runtime and test compile dependencies.
+
+}
+wrapper{
+    version='4.2.1'
+}
+
+
