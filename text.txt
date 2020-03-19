@@ -1,0 +1,18 @@
+evict method is used
+@Transactional
+
+it make sure that the method or class or interface must follow the database rules, either the whole transaction should occur or none of it.
+if any sort of exception occurs the whole transaction should roll back.
+also it maintains a hibernate session
+
+e.g
+
+try{
+    userTransaction.start();
+    businessLogic();
+    userTransaction.commit();
+} catch(Excepton ex) {
+    ex.rollback();
+}
+
+all of this is done the above annotation.
