@@ -8,9 +8,9 @@ import javax.persistence.*;
 
 @Entity
 @PrimaryKeyJoinColumn(name = "user_id")
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonIgnoreProperties(ignoreUnknown = true)  // all the extra properties should be ignored.
 @JsonFilter("ignoreAddressInCustomer")
-public class Customers extends User  {
+public class Customer extends User  {
 
     private String contact;
 

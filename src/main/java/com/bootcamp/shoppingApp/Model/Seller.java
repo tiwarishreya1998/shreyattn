@@ -1,7 +1,4 @@
 package com.bootcamp.shoppingApp.Model;
-
-import com.sun.tools.javac.jvm.Gen;
-
 import javax.persistence.*;
 
 @Entity

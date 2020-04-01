@@ -25,10 +25,10 @@ public class AppUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         boolean isValid=validEmail.checkEmailValid(email);
         if (!isValid){
-            throw new RuntimeException("Email not vaild");
+            throw new RuntimeException("Email not valid");//response will go to postman that email is not valid.
         }
         String encryptedPassword=passwordEncoder.encode("pass");
-        System.out.println("Trying to authneticate user: "+email);
+        System.out.println("Trying to authenticate user: "+email);
 
         System.out.println("Encrypted password :: "+encryptedPassword);
 

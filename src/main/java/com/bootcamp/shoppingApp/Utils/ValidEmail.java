@@ -1,13 +1,9 @@
 package com.bootcamp.shoppingApp.Utils;
-
-
-import org.springframework.stereotype.Service;
-
 import java.util.regex.Pattern;
 
-@Service
+
 public class ValidEmail {
-    public boolean checkEmailValid(String email) {
+    public static boolean checkEmailValid(String email) {
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
                 "[a-zA-Z0-9_+&*-]+)*@" +
                 "(?:[a-zA-Z0-9-]+\\.)+[a-z" +

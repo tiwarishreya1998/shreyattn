@@ -1,25 +1,16 @@
 package com.bootcamp.shoppingApp.Model;
 
-
-import com.bootcamp.shoppingApp.Security.GrantAuthorityImpl;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-
-import java.util.Collection;
 import java.util.Date;
-import java.util.List;
+
 import java.util.Set;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String firstName;
     private String middleName;
@@ -113,7 +104,7 @@ public class User {
     @JsonIgnore
     public boolean isDeleted() {
         return isDeleted;
-    }
+    }//do not want to show user this.
 
     public void setDeleted(boolean deleted) {
         isDeleted = deleted;
