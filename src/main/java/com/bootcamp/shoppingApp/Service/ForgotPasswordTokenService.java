@@ -39,7 +39,7 @@ public class ForgotPasswordTokenService {
 
         User user=userRepository.findByEmail(email);
         try{
-            if(user.getEmail() == null){//why not equals..
+            if(user.getEmail().equals(null)){
         }}
         catch(NullPointerException ex){
             return "Email not found";
@@ -66,9 +66,9 @@ public class ForgotPasswordTokenService {
         if (!ValidPassword.isValidPassword(pass)){
             return "Password you entered is not valid";
         }
-        ForgotPasswordToken  forgotPasswordToken=forgotPasswordTokenRepo.findByEmail(email);
+        ForgotPasswordToken  forgotPasswordToken=forgotPasswordTokenRepo.findByUserEmail(email);
         try{
-            if(forgotPasswordToken.getUserEmail() == null){
+            if(forgotPasswordToken.getUserEmail().equals(null)){
 
             }
         }

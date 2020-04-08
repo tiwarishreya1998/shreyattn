@@ -10,7 +10,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
-import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerEndpointsConfiguration;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
@@ -31,7 +30,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     @Autowired
     private UserDetailsService userDetailsService;
 
-    public AuthorizationServerConfiguration() {
+    public AuthorizationServerConfiguration() {super();
     }
 
     @Bean
@@ -50,7 +49,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     }
 
     @Bean
-    private TokenStore tokenStore() {
+      public TokenStore tokenStore() {
         return new InMemoryTokenStore();
 
     }

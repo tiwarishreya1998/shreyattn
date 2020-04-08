@@ -1,6 +1,4 @@
 package com.bootcamp.shoppingApp.Security;
-
-import com.bootcamp.shoppingApp.Model.Role;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

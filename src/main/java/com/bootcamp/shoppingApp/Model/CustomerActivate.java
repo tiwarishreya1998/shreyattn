@@ -10,7 +10,8 @@ import java.util.Date;
 public class CustomerActivate {
     private static final int EXPIRATION=60*24;
 
-    @Id@GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
 
     private String token;

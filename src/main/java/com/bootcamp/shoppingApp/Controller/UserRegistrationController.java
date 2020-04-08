@@ -5,7 +5,7 @@ import com.bootcamp.shoppingApp.Model.Customer;
 import com.bootcamp.shoppingApp.Model.Seller;
 import com.bootcamp.shoppingApp.Service.UserRegistrationService;
 import com.bootcamp.shoppingApp.Utils.SendEmail;
-import com.sun.media.jfxmedia.logging.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

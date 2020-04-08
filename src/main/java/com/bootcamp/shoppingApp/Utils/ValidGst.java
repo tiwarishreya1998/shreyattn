@@ -3,9 +3,9 @@ package com.bootcamp.shoppingApp.Utils;
 import org.springframework.stereotype.Service;
 
 
-@Service
+
 public class ValidGst {
-    public boolean checkGstValid(String gst){
+    public static boolean checkGstValid(String gst){
         if(gst.length()!=15){
             return false;
 

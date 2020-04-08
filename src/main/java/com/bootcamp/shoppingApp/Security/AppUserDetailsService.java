@@ -8,7 +8,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
+
+@Service
 public class AppUserDetailsService implements UserDetailsService {
 
     @Autowired
@@ -17,13 +20,11 @@ public class AppUserDetailsService implements UserDetailsService {
     @Autowired
     private UserDao userDao;
 
-    @Autowired
-    private ValidEmail validEmail;
 
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        boolean isValid=validEmail.checkEmailValid(email);
+        boolean isValid=ValidEmail.checkEmailValid(email);
         if (!isValid){
             throw new RuntimeException("Email not valid");//response will go to postman that email is not valid.
         }

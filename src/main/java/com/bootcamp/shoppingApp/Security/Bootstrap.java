@@ -2,7 +2,7 @@ package com.bootcamp.shoppingApp.Security;
 
 import com.bootcamp.shoppingApp.Model.Admin;
 import com.bootcamp.shoppingApp.Model.Role;
-import com.bootcamp.shoppingApp.Model.User;
+
 import com.bootcamp.shoppingApp.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -10,8 +10,6 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
-
-import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -20,7 +18,7 @@ import java.util.Set;
 public class Bootstrap implements ApplicationRunner {
 
     @Autowired
-    UserRepository userRepository;
+    private  UserRepository userRepository;
     @Override
     public void run(ApplicationArguments args) throws Exception {
         if (userRepository.count()<1){

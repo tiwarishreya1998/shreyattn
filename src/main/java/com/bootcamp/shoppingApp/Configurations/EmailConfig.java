@@ -1,7 +1,9 @@
 package com.bootcamp.shoppingApp.Configurations;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
+@Component
 public class EmailConfig {
     @Value("${spring.mail.host}")  //
     private String host;

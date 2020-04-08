@@ -22,8 +22,7 @@ public class UserRegistrationService {
     private CustomerActivateRepo customerActivateRepo;
     @Autowired
     private PasswordEncoder passwordEncoder;
-    @Autowired
-    private ValidGst validGst;
+
     @Autowired
     private SellerRepository sellerRepository;
     @Autowired
@@ -82,7 +81,7 @@ public class UserRegistrationService {
 
     public String registerSeller(Seller seller)
     {
-        boolean isValidGst=validGst.checkGstValid(seller.getGst());
+        boolean isValidGst=ValidGst.checkGstValid(seller.getGst());
             if(!isValidGst){
                 return "Gst is not valid";
             }
@@ -103,9 +102,9 @@ public class UserRegistrationService {
 
             }
 
-            Seller seller1=sellerRepository.findByCompanyName(seller.getCompany_name());
+            Seller seller1=sellerRepository.findByCompanyName(seller.getCompanyName());
             try {
-                if (seller1.getCompany_name().equalsIgnoreCase(seller.getCompany_name())) {
+                if (seller1.getCompanyName().equalsIgnoreCase(seller.getCompanyName())) {
                     return "Company name should be unique";
                 }
             }
@@ -139,7 +138,7 @@ public class UserRegistrationService {
 
             seller.setPassword(passwordEncoder.encode(seller.getPassword()));
 
-            if(seller.getCompany_contact().length()!=10){
+            if(seller.getCompanyContact().length()!=10){
                 return "Invalid Contact";
             }
 

@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 public interface CustomerActivateRepo extends CrudRepository<CustomerActivate,Long>
 {
     CustomerActivate findByUserEmail(String email);
-    void deleteByEmail(String email);
+    void deleteByUserEmail(String email);
 }

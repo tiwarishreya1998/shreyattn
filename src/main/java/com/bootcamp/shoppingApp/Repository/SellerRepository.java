@@ -9,6 +9,6 @@ import java.util.List;
 public interface SellerRepository extends CrudRepository<Seller,Long> {
 
     List<Seller> findByGst(String gst);
-    Seller findByCompanyName(String company_name);
+    Seller findByCompanyName(String companyName);
     List<Seller> findAll(Pageable pageable);
 }

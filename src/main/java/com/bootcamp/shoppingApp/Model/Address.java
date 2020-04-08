@@ -18,7 +18,7 @@ public class Address {
 
 
     @JsonIgnore
-    @ManyToMany(cascade =CascadeType.ALL)
+    @ManyToOne(cascade =CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
 
