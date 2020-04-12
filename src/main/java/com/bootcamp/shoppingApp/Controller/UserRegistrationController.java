@@ -1,11 +1,10 @@
 package com.bootcamp.shoppingApp.Controller;
 
 
-import com.bootcamp.shoppingApp.Model.Customer;
-import com.bootcamp.shoppingApp.Model.Seller;
-import com.bootcamp.shoppingApp.Service.UserRegistrationService;
-import com.bootcamp.shoppingApp.Utils.SendEmail;
-
+import com.bootcamp.shoppingApp.Model.user.Customer;
+import com.bootcamp.shoppingApp.Model.user.Seller;
+import com.bootcamp.shoppingApp.service.UserRegistrationService;
+import com.bootcamp.shoppingApp.utils.SendEmail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -40,7 +39,7 @@ public class UserRegistrationController {
 
 
     @PostMapping("register/seller")
-    public String registerSeller(@RequestBody Seller seller,HttpServletResponse httpServletResponse){
+    public String registerSeller(@RequestBody Seller seller, HttpServletResponse httpServletResponse){
         String getMessage =userRegistrationService.registerSeller(seller);
         if(getMessage.equals("Success")){
             sendEmail.sendEmail("Account Created","Waiting for approval",seller.getEmail());

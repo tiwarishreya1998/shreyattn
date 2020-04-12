@@ -1,7 +1,6 @@
 package com.bootcamp.shoppingApp.Controller;
 
-import com.bootcamp.shoppingApp.Model.ForgotPasswordToken;
-import com.bootcamp.shoppingApp.Service.ForgotPasswordTokenService;
+import com.bootcamp.shoppingApp.service.ForgotPasswordTokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.token.TokenStore;

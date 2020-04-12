@@ -1,17 +1,15 @@
 package com.bootcamp.shoppingApp.Controller;
 
-import com.bootcamp.shoppingApp.Model.Customer;
-import com.bootcamp.shoppingApp.Model.Seller;
-import com.bootcamp.shoppingApp.Model.User;
-import com.bootcamp.shoppingApp.Repository.CustomerRepo;
-import com.bootcamp.shoppingApp.Repository.SellerRepository;
-import com.bootcamp.shoppingApp.Repository.UserRepository;
-import com.bootcamp.shoppingApp.Utils.SendEmail;
-
+import com.bootcamp.shoppingApp.Model.user.Customer;
+import com.bootcamp.shoppingApp.Model.user.Seller;
+import com.bootcamp.shoppingApp.Model.user.User;
+import com.bootcamp.shoppingApp.repository.CustomerRepo;
+import com.bootcamp.shoppingApp.repository.SellerRepository;
+import com.bootcamp.shoppingApp.repository.UserRepository;
+import com.bootcamp.shoppingApp.utils.SendEmail;
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -137,7 +135,7 @@ public class AdminController {
         SimpleBeanPropertyFilter filter=SimpleBeanPropertyFilter.filterOutAllExcept("id","firstName","middleName","lastName","email","active","addresses","companyName","companyContact");
         FilterProvider filterProvider=new SimpleFilterProvider().addFilter("ignoreAddressInCustomer",filter);
         MappingJacksonValue mappingJacksonValue=new MappingJacksonValue(sellers);
-
+        mappingJacksonValue.setFilters(filterProvider);
         return  mappingJacksonValue;
 
     }
