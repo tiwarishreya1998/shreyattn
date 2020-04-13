@@ -1,4 +1,4 @@
-package com.bootcamp.shoppingApp.Model.Product;
+package com.bootcamp.shoppingApp.Model.product;
 
 import com.bootcamp.shoppingApp.Model.utilPack.HashMapConverter;
 

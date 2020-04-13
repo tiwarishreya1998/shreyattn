@@ -1,6 +1,6 @@
 package com.bootcamp.shoppingApp.Model.orderPack;
 
-import com.bootcamp.shoppingApp.Model.Product.ProductVariation;
+import com.bootcamp.shoppingApp.Model.product.ProductVariation;
 import com.bootcamp.shoppingApp.Model.utilPack.HashMapConverter;
 
 import javax.persistence.*;
@@ -13,7 +13,7 @@ public class OrderProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    private Integer Quantity;
+    private Integer quantity;
     private BigDecimal price;
 
    @ManyToOne
@@ -39,11 +39,11 @@ public class OrderProduct {
     }
 
     public Integer getQuantity() {
-        return Quantity;
+        return quantity;
     }
 
     public void setQuantity(Integer quantity) {
-        Quantity = quantity;
+        quantity = quantity;
     }
 
     public Order getOrder() {

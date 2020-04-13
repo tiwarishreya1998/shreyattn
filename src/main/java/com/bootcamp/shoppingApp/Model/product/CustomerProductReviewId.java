@@ -1,11 +1,13 @@
-package com.bootcamp.shoppingApp.Model.Product;
+package com.bootcamp.shoppingApp.Model.product;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
-public class CustomerProductReviewId {
+public class CustomerProductReviewId implements Serializable {
+
     @Column(name = "customer_user_id")
     private Long customerUserId;
     @Column(name = "product_id")

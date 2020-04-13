@@ -6,6 +6,7 @@ import java.util.Date;
 
 @Embeddable
 public class AuditingInfo {
+
     private Date dateCreated;
     private Date lastUpdated;
     private String createdBy;
@@ -41,5 +42,15 @@ public class AuditingInfo {
 
     public void setUpdatedBy(String updatedBy) {
         this.updatedBy = updatedBy;
+    }
+
+    @Override
+    public String toString() {
+        return "AuditingInfo{" +
+                "dateCreated=" + dateCreated +
+                ", lastUpdated=" + lastUpdated +
+                ", createdBy='" + createdBy + '\'' +
+                ", updatedBy='" + updatedBy + '\'' +
+                '}';
     }
 }

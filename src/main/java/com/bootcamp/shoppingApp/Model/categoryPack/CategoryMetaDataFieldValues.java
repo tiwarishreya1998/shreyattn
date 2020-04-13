@@ -10,11 +10,11 @@ public class CategoryMetaDataFieldValues {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "category_id",updatable = false,insertable = false)
+    @JoinColumn(name = "category_id")
     private Category category;
 
     @ManyToOne
-    @JoinColumn(name = "category_metadata_field_id",updatable = false,insertable = false)
+    @JoinColumn(name = "category_metadata_field_id")
     private CategoryMetaDataField categoryMetaDataField;
 
     public Long getId() {

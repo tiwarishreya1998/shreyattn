@@ -1,6 +1,6 @@
 package com.bootcamp.shoppingApp.Model.categoryPack;
 
-import com.bootcamp.shoppingApp.Model.Product.Product;
+import com.bootcamp.shoppingApp.Model.product.Product;
 import com.bootcamp.shoppingApp.Model.utilPack.AuditingInfo;
 
 import javax.persistence.*;
@@ -11,6 +11,7 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+
     @Column(unique = true,nullable =false)
     private String name;
 

@@ -1,6 +1,6 @@
 package com.bootcamp.shoppingApp.Model.user;
 
-import com.bootcamp.shoppingApp.Model.Product.Product;
+import com.bootcamp.shoppingApp.Model.product.Product;
 
 import javax.persistence.*;
 import java.util.Set;

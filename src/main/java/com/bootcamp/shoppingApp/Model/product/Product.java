@@ -1,4 +1,4 @@
-package com.bootcamp.shoppingApp.Model.Product;
+package com.bootcamp.shoppingApp.Model.product;
 
 import com.bootcamp.shoppingApp.Model.categoryPack.Category;
 import com.bootcamp.shoppingApp.Model.user.Seller;

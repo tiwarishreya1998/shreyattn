@@ -10,9 +10,11 @@ import java.util.Set;
 @Entity
 public class Order {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+
     private BigDecimal amountPaid;
     private String paymentMethod;
     private String customerAddressCity;
@@ -26,11 +28,11 @@ public class Order {
     private AuditingInfo auditingInfo;
 
     @ManyToOne
-    @JoinColumn(name = "customer_user-id")
+    @JoinColumn(name = "customer_user_id")
     private Customer customer;
 
-    @OneToMany(mappedBy = "orderTable",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    private Set<OrderProduct>orderProducts;
+    @OneToMany(mappedBy = "order",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private Set<OrderProduct> orderProducts;
 
     public Long getId() {
         return id;

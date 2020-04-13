@@ -2,10 +2,11 @@ package com.bootcamp.shoppingApp.Model.orderPack;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
-public class CustomerProductVariationId {
+public class CustomerProductVariationId implements Serializable {
     @Column(name = "customer_user_id")
     private Long customerUserId;
     @Column(name="product_variation_id")

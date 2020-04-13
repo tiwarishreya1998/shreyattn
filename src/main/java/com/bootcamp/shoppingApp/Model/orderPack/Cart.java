@@ -1,6 +1,6 @@
 package com.bootcamp.shoppingApp.Model.orderPack;
 
-import com.bootcamp.shoppingApp.Model.Product.ProductVariation;
+import com.bootcamp.shoppingApp.Model.product.ProductVariation;
 import com.bootcamp.shoppingApp.Model.user.Customer;
 
 import javax.persistence.*;
