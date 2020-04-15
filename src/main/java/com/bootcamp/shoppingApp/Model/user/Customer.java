@@ -1,7 +1,7 @@
 package com.bootcamp.shoppingApp.Model.user;
 
 import com.bootcamp.shoppingApp.Model.orderPack.Cart;
-import com.bootcamp.shoppingApp.Model.orderPack.Order;
+import com.bootcamp.shoppingApp.Model.orderPack.OrderT;
 import com.bootcamp.shoppingApp.Model.product.ProductReview;
 import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -21,7 +21,7 @@ public class Customer extends User {
     private Set<ProductReview>productReviews;
 
     @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    private Set<Order> orders;
+    private Set<OrderT> orderTS;
 
     @OneToOne(mappedBy = "customer",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Cart cart;
@@ -42,12 +42,12 @@ public class Customer extends User {
         this.productReviews = productReviews;
     }
 
-    public Set<Order> getOrders() {
-        return orders;
+    public Set<OrderT> getOrderTS() {
+        return orderTS;
     }
 
-    public void setOrders(Set<Order> orders) {
-        this.orders = orders;
+    public void setOrderTS(Set<OrderT> orderTS) {
+        this.orderTS = orderTS;
     }
 
     public Cart getCart() {

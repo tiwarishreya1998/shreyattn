@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface SellerRepository extends CrudRepository<Seller,Long> {
 
+    Seller findByEmail(String email);
     List<Seller> findByGst(String gst);
     Seller findByCompanyName(String companyName);
     List<Seller> findAll(Pageable pageable);

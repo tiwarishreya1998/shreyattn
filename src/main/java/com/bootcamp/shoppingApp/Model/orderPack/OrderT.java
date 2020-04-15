@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 import java.util.Set;
 
 @Entity
-public class Order {
+public class OrderT {
 
 
     @Id
@@ -31,7 +31,7 @@ public class Order {
     @JoinColumn(name = "customer_user_id")
     private Customer customer;
 
-    @OneToMany(mappedBy = "order",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "orderT",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Set<OrderProduct> orderProducts;
 
     public Long getId() {

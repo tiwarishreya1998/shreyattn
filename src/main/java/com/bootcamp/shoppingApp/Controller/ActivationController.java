@@ -14,7 +14,7 @@ public class ActivationController {
     private CustomerActivateService customerActivateService;
 
 
-    @PutMapping("customer/activate")
+    @PutMapping("customer/activate/{token}")
     public String activateCustomer(@PathVariable String  token, HttpServletResponse httpServletResponse){
         String getMessage=customerActivateService.activateCustomer(token);
         if(getMessage.equals("Success")){

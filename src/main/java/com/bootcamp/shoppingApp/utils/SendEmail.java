@@ -21,7 +21,7 @@ public class SendEmail {
         mailSender.setPassword(emailConfig.getPassword());
 
         SimpleMailMessage mailMessage = new SimpleMailMessage();
-        mailMessage.setFrom(" admin-0fe044@inbox.mailtrap.io");
+        mailMessage.setFrom("admin@ecommerce.com");
         mailMessage.setTo(sendTo);
         mailMessage.setSubject(subject);
         mailMessage.setText(text);

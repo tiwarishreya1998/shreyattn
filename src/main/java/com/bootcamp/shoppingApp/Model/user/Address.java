@@ -13,7 +13,7 @@ public class Address {
     private String state;
     private String country;
     private String address;
-    private Long zip_code;
+    private Long zipCode;
     private String label;
 
 
@@ -62,12 +62,12 @@ public class Address {
         this.address = address;
     }
 
-    public Long getZip_code() {
-        return zip_code;
+    public Long getZipCode() {
+        return zipCode;
     }
 
-    public void setZip_code(Long zip_code) {
-        this.zip_code = zip_code;
+    public void setZipCode(Long zipCode) {
+        this.zipCode = zipCode;
     }
 
     public String getLabel() {

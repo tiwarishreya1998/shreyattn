@@ -17,8 +17,8 @@ public class OrderProduct {
     private BigDecimal price;
 
    @ManyToOne
-   @JoinColumn(name = "order_id")
-   private Order order;
+   @JoinColumn(name = "order_t_id")
+   private OrderT orderT;
 
    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
    @JoinColumn(name = "product_variation_id")
@@ -46,12 +46,12 @@ public class OrderProduct {
         quantity = quantity;
     }
 
-    public Order getOrder() {
-        return order;
+    public OrderT getOrderT() {
+        return orderT;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setOrderT(OrderT orderT) {
+        this.orderT = orderT;
     }
 
     public ProductVariation getProductVariation() {

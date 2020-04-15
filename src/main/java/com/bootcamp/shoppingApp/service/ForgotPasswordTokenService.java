@@ -60,8 +60,8 @@ public class ForgotPasswordTokenService {
     }
 
     @Transactional
-    public String resetPassword(String email,String token,String pass,String cPass){
-        if(!pass.equals(cPass)){
+    public String resetPassword(String email,String token,String pass,String cpass){
+        if(!pass.equals(cpass)){
             return "The password and confirm password are both same";
         }
         if (!ValidPassword.isValidPassword(pass)){
