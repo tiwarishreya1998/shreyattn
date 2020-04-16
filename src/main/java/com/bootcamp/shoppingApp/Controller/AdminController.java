@@ -56,7 +56,7 @@ public class AdminController {
         return "Success";
     }
 
-    @PatchMapping("admin/deactivate/customer/{id}")
+    @PatchMapping("/admin/deactivate/customer/{id}")
     public String deactivateCustomer(@PathVariable Long id, HttpServletResponse httpServletResponse) {
         Optional<User> user = userRepository.findById(id);
         if (!user.isPresent()) {
@@ -77,7 +77,7 @@ public class AdminController {
 
     }
 
-    @PatchMapping("admin/activate/seller/{id}")
+    @PatchMapping("/admin/activate/seller/{id}")
     public String activateSeller(@PathVariable Long id, HttpServletResponse httpServletResponse) {
         Optional<User> user = userRepository.findById(id);
         if (!user.isPresent()) {
@@ -96,7 +96,7 @@ public class AdminController {
         return "Success";
     }
 
-    @PatchMapping("admin/deactivate/seller/{id}")
+    @PatchMapping("/admin/deactivate/seller/{id}")
     public String deactivateSeller(@PathVariable Long id,HttpServletResponse httpServletResponse){
         Optional<User> user=userRepository.findById(id);
         if(!user.isPresent()){
@@ -116,7 +116,7 @@ public class AdminController {
     }
 
 
-    @GetMapping("admin/customer")
+    @GetMapping("/admin/customer")
     public MappingJacksonValue getCustomer(@RequestParam(defaultValue = "0")String page,@RequestParam(defaultValue = "10")String size,@RequestParam(defaultValue = "id")String SortBy){
         List<Customer> customersList=customerRepo.findAll(PageRequest.of(Integer.parseInt(page),Integer.parseInt(size), Sort.by(SortBy)));
         SimpleBeanPropertyFilter filter=SimpleBeanPropertyFilter.filterOutAllExcept("id","firstName","middleName","lastName","email","active");
@@ -128,7 +128,7 @@ public class AdminController {
 
     }
 
-    @GetMapping("admin/seller")
+    @GetMapping("/admin/seller")
     public MappingJacksonValue getSeller(@RequestParam(defaultValue = "0")String page,@RequestParam(defaultValue = "10") String size,@RequestParam(defaultValue = "id")String SortBy)
     {
         List<Seller> sellers=sellerRepository.findAll(PageRequest.of(Integer.parseInt(page),Integer.parseInt(size),Sort.by(SortBy)));

@@ -16,7 +16,7 @@ public class SellerProfileController {
     SellerProfileService sellerProfileService;
 
     @Autowired
-    private ModelMapper modelMapper;
+    ModelMapper modelMapper;
 
     @GetMapping("")
     public SellerProfileDto viewProfile(HttpServletRequest request) {

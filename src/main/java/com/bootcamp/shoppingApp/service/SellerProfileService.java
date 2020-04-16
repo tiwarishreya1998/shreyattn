@@ -63,17 +63,25 @@ public class SellerProfileService {
                 seller.setLastName(sellerProfileDto.getLastName());
             }
             if (sellerProfileDto.getCompanyContact() != null) {
-                Seller anotherLocalSeller = sellerRepository.findByCompanyName(sellerProfileDto.getCompanyName());
+                Seller anotherLocalSeller = sellerRepository.findByCompanyContact(sellerProfileDto.getCompanyContact());
                 try {
-                    if (anotherLocalSeller.getCompanyName().equalsIgnoreCase(seller.getCompanyName())) {
-                        return "company name should be unique";
+                    if (anotherLocalSeller.getCompanyContact().equalsIgnoreCase(sellerProfileDto.getCompanyContact())) {
+                        return "company contact should be unique";
                     }
                 } catch (NullPointerException ex) {
-//            ex.printStackTrace();
+
                 }
                 seller.setCompanyContact(sellerProfileDto.getCompanyContact());
             }
             if (sellerProfileDto.getCompanyName() != null) {
+                Seller anotherLocalSeller = sellerRepository.findByCompanyName(sellerProfileDto.getCompanyName());
+                try {
+                    if (anotherLocalSeller.getCompanyName().equalsIgnoreCase(sellerProfileDto.getCompanyName())) {
+                        return "company name should be unique";
+                    }
+                } catch (NullPointerException ex) {
+
+                }
                 seller.setCompanyName(sellerProfileDto.getCompanyName());
             }
             if (sellerProfileDto.getGst() != null) {
@@ -114,7 +122,7 @@ public class SellerProfileService {
         Seller seller = sellerRepository.findByEmail(userEmailFromToken.getUserEmail(request));
         Set<Address> addresses = seller.getAddresses();
         addresses.forEach(a->{
-            if (a.getId() == address.get().getId()) {
+            if (a.getId().equals(address.get().getId())){
                 a.setAddress(addressDto.getAddress());
                 a.setCity(addressDto.getCity());
                 a.setCountry(addressDto.getCountry());

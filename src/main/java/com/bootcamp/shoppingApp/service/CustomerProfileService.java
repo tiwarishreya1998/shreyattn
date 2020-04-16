@@ -128,7 +128,7 @@ public class CustomerProfileService {
         Customer customer = customerRepo.findByEmail(userEmailFromToken.getUserEmail(request));
         Set<Address> addresses = customer.getAddresses();
         addresses.forEach(a->{
-            if (a.getId() == address.get().getId()) {
+            if (a.getId().equals(address.get().getId())){
                 a.setAddress(addressDto.getAddress());
                 a.setCity(addressDto.getCity());
                 a.setCountry(addressDto.getCountry());

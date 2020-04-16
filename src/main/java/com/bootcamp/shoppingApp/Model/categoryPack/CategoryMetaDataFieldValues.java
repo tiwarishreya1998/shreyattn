@@ -17,6 +17,16 @@ public class CategoryMetaDataFieldValues {
     @JoinColumn(name = "category_metadata_field_id")
     private CategoryMetaDataField categoryMetaDataField;
 
+    private String value;
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
     public Long getId() {
         return id;
     }

@@ -3,21 +3,25 @@ package com.bootcamp.shoppingApp.Model.product;
 import com.bootcamp.shoppingApp.Model.categoryPack.Category;
 import com.bootcamp.shoppingApp.Model.user.Seller;
 import com.bootcamp.shoppingApp.Model.utilPack.AuditingInfo;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
 public class Product {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String name;
     private String description;
     private Boolean isCancellable;
-    private Boolean isReturnable;
+    @JsonProperty
+    private Boolean isReturnable=false;
     private String brand;
-    private Boolean isActive;
+    private  Boolean isActive;
+
 
     @Embedded
     private AuditingInfo auditingInfo;
@@ -130,5 +134,23 @@ public class Product {
 
     public void setProductReviews(Set<ProductReview> productReviews) {
         this.productReviews = productReviews;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", isCancellable=" + isCancellable +
+                ", isReturnable=" + isReturnable +
+                ", brand='" + brand + '\'' +
+                ", isActive=" + isActive +
+                ", auditingInfo=" + auditingInfo +
+                ", category=" + category +
+                ", seller=" + seller +
+                ", productVariations=" + productVariations +
+                ", productReviews=" + productReviews +
+                '}';
     }
 }

@@ -45,6 +45,20 @@ public class CustomizedExceptionHandler {
         return new ResponseEntity(exceptionResponse, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(FieldAlreadyPresent.class)
+    public final ResponseEntity<Object> fieldAlreadyPresent(FieldAlreadyPresent ex, WebRequest request) {
+        ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(),
+                request.getDescription(false));
+        return new ResponseEntity(exceptionResponse, HttpStatus.BAD_REQUEST);
+    }
+    @ExceptionHandler(ProductNotActive.class)
+    public final ResponseEntity<Object> productNotActive(ProductNotActive ex, WebRequest request) {
+        ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(),
+                request.getDescription(false));
+        return new ResponseEntity(exceptionResponse, HttpStatus.BAD_REQUEST);
+    }
+
+
 
 
 }

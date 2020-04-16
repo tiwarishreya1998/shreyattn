@@ -2,6 +2,8 @@ package com.bootcamp.shoppingApp.security;
 
 import com.bootcamp.shoppingApp.Model.user.User;
 import com.bootcamp.shoppingApp.repository.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -14,9 +16,11 @@ public class UserDao {
     @Autowired
     private UserRepository userRepository;
 
+    private static final Logger LOGGER= LoggerFactory.getLogger(UserDao.class);
     AppUser loadUserByEmail(String email) {
         User user = userRepository.findByEmail(email);
-        System.out.println(user);
+      //  System.out.println(user);
+        LOGGER.debug("-------------USER DAO------------------",user);
         if (email != null) {
             List<GrantAuthorityImpl> authorities = new ArrayList<>();
             user.getRoles().forEach(role -> {
@@ -28,7 +32,7 @@ public class UserDao {
 
 
         } else {
-            throw new RuntimeException();
+            throw new RuntimeException("User not found");
 
 
         }

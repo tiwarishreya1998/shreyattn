@@ -9,7 +9,7 @@ import java.util.Date;
 public class ForgotPasswordToken {
     private static final int EXPIRATION=60*24;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long  id;
     private String token;
     private String userEmail;
