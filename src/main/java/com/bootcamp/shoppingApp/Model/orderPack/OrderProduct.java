@@ -25,7 +25,7 @@ public class OrderProduct {
    private ProductVariation productVariation;
 
    @Convert(converter = HashMapConverter.class)
-   private Map<String,Object> productVariationMetaData;
+   private Map<String,Object> productVariationMetadata;
 
     @OneToMany(mappedBy = "orderProduct",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Set<OrderStatus> orderStatuses;
@@ -62,12 +62,12 @@ public class OrderProduct {
         this.productVariation = productVariation;
     }
 
-    public Map<String, Object> getProductVariationMetaData() {
-        return productVariationMetaData;
+    public Map<String, Object> getProductVariationMetadata() {
+        return productVariationMetadata;
     }
 
-    public void setProductVariationMetaData(Map<String, Object> productVariationMetaData) {
-        this.productVariationMetaData = productVariationMetaData;
+    public void setProductVariationMetadata(Map<String, Object> productVariationMetadata) {
+        this.productVariationMetadata = productVariationMetadata;
     }
 
     public Set<OrderStatus> getOrderStatuses() {

@@ -100,4 +100,8 @@ public class CustomerProfileController {
     public List<Category> viewLeafCategories(@RequestParam Optional<Long> categoryId) {
         return categoryService.viewCategoriesSameParent(categoryId);
     }
+    @GetMapping("/filterCategories/{categoryId}")
+    public List<?> filterCategory(@PathVariable Long categoryId) {
+        return categoryService.filterCategory(categoryId);
+    }
 }

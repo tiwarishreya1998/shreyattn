@@ -30,10 +30,10 @@ public class AppUserDetailsService implements UserDetailsService {
             throw new RuntimeException("Email not valid");//response will go to postman that email is not valid.
         }
         String encryptedPassword=passwordEncoder.encode("pass");
-        System.out.println("Trying to authenticate user: "+email);
-        LOGGER.debug("Trying ti authenticate user: ",email);
 
-        LOGGER.debug("Encrypted Password : ",encryptedPassword);
+        LOGGER.debug("Trying to authenticate user:{} ",email);
+
+        LOGGER.debug("Encrypted Password :{} ",encryptedPassword);
 
         UserDetails userDetails=userDao.loadUserByEmail(email);
         return userDetails;

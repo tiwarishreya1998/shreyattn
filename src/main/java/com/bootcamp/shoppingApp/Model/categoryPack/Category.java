@@ -2,6 +2,7 @@ package com.bootcamp.shoppingApp.Model.categoryPack;
 
 import com.bootcamp.shoppingApp.Model.product.Product;
 import com.bootcamp.shoppingApp.Model.utilPack.AuditingInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -12,21 +13,24 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @Column(unique = true,nullable =false)
+    @Column(nullable =false)
     private String name;
 
     @Embedded
     private AuditingInfo auditingInfo;
 
     @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name = "parent_id",referencedColumnName = "id",nullable = true)
+    @JoinColumn(name = "parent_id")
     private Category parentId;
+
+    @OneToMany(mappedBy = "parentId",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private Set<Category> childrenCategories;
 
     @OneToMany(mappedBy = "category",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Set<Product>products;
 
     @OneToMany(mappedBy = "category",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    private Set<CategoryMetaDataFieldValues> categoryMetaDataFieldValues;
+    private Set<CategoryMetadataFieldValues> categoryMetadataFieldValues;
 
     public Long getId() {
         return id;
@@ -45,6 +49,7 @@ public class Category {
         this.name = name;
     }
 
+    @JsonIgnore
     public AuditingInfo getAuditingInfo() {
         return auditingInfo;
     }
@@ -61,6 +66,7 @@ public class Category {
         this.parentId = parentId;
     }
 
+    @JsonIgnore
     public Set<Product> getProducts() {
         return products;
     }
@@ -69,11 +75,32 @@ public class Category {
         this.products = products;
     }
 
-    public Set<CategoryMetaDataFieldValues> getCategoryMetaDataFieldValues() {
-        return categoryMetaDataFieldValues;
+    @JsonIgnore
+    public Set<CategoryMetadataFieldValues> getCategoryMetadataFieldValues() {
+        return categoryMetadataFieldValues;
     }
 
-    public void setCategoryMetaDataFieldValues(Set<CategoryMetaDataFieldValues> categoryMetaDataFieldValues) {
-        this.categoryMetaDataFieldValues = categoryMetaDataFieldValues;
+    public void setCategoryMetadataFieldValues(Set<CategoryMetadataFieldValues> categoryMetadataFieldValues) {
+        this.categoryMetadataFieldValues = categoryMetadataFieldValues;
+    }
+    @JsonIgnore
+    public Set<Category> getChildrenCategories() {
+        return childrenCategories;
+    }
+
+    public void setChildrenCategories(Set<Category> childrenCategories) {
+        this.childrenCategories = childrenCategories;
+    }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", auditingInfo=" + auditingInfo +
+                ", parentId=" + parentId +
+                ", products=" + products +
+                ", categoryMetadataFieldValues=" + categoryMetadataFieldValues +
+                '}';
     }
 }

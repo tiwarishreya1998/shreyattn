@@ -7,9 +7,9 @@ import javax.persistence.*;
 
 @Entity
 public class ProductReview {
-
-    @EmbeddedId
-    private CustomerProductReviewId customerProductReviewId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
 
     private String review;
     private Integer rating;
@@ -18,19 +18,19 @@ public class ProductReview {
     private AuditingInfo auditingInfo;
 
     @ManyToOne
-    @JoinColumn(name = "product_id",insertable = false,updatable = false)
-    private Product product;
-
-    @ManyToOne
     @JoinColumn(name = "customer_user_id",insertable = false,updatable = false)
     private Customer customer;
 
-    public CustomerProductReviewId getCustomerProductReviewId() {
-        return customerProductReviewId;
+    @ManyToOne
+    @JoinColumn(name = "product_id",insertable = false,updatable = false)
+    private Product product;
+
+    public Long getId() {
+        return id;
     }
 
-    public void setCustomerProductReviewId(CustomerProductReviewId customerProductReviewId) {
-        this.customerProductReviewId = customerProductReviewId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getReview() {
@@ -57,19 +57,19 @@ public class ProductReview {
         this.auditingInfo = auditingInfo;
     }
 
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
     public Customer getCustomer() {
         return customer;
     }
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }

@@ -1,6 +1,8 @@
 package com.bootcamp.shoppingApp.Controller;
 
 import com.bootcamp.shoppingApp.service.ForgotPasswordTokenService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.token.TokenStore;
@@ -17,12 +19,14 @@ public class ForgotPasswordController {
 
     @Autowired
     private ForgotPasswordTokenService forgotPasswordTokenService;
+    private static final Logger LOGGER= LoggerFactory.getLogger(ForgotPasswordController.class);
 
     @PostMapping("/token/{email}")
     public String getToken(@PathVariable String email, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse){
 
         String getMessage=forgotPasswordTokenService.sendToken(email);
-        System.out.println(getMessage);
+        LOGGER.debug("{}",getMessage);
+
         if(getMessage.equals("Success")){
         String authHeader=httpServletRequest.getHeader("Authorization");
         if (authHeader!=null){

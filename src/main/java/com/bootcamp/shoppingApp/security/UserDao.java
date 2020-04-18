@@ -17,10 +17,10 @@ public class UserDao {
     private UserRepository userRepository;
 
     private static final Logger LOGGER= LoggerFactory.getLogger(UserDao.class);
+
     AppUser loadUserByEmail(String email) {
         User user = userRepository.findByEmail(email);
-      //  System.out.println(user);
-        LOGGER.debug("-------------USER DAO------------------",user);
+        LOGGER.debug("-------------USER DAO------------------{}",user);
         if (email != null) {
             List<GrantAuthorityImpl> authorities = new ArrayList<>();
             user.getRoles().forEach(role -> {
@@ -33,7 +33,6 @@ public class UserDao {
 
         } else {
             throw new RuntimeException("User not found");
-
 
         }
 

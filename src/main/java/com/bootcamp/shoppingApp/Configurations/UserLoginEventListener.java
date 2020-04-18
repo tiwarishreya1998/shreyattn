@@ -5,6 +5,8 @@ import com.bootcamp.shoppingApp.Model.user.UserLoginFailCounter;
 import com.bootcamp.shoppingApp.repository.UserLoginFailCounterRepository;
 import com.bootcamp.shoppingApp.repository.UserRepository;
 import com.bootcamp.shoppingApp.utils.SendEmail;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;
 import org.springframework.security.authentication.event.AuthenticationFailureBadCredentialsEvent;
@@ -18,22 +20,22 @@ public class UserLoginEventListener {
 
     @Autowired
     UserLoginFailCounterRepository userLoginFailCounterRepo;
-
     @Autowired
     UserRepository userRepo;
 
     @Autowired
     SendEmail sendEmail;
 
+    private static final Logger LOGGER= LoggerFactory.getLogger(UserLoginEventListener.class);
     @EventListener
     public void authenticationFailed(AuthenticationFailureBadCredentialsEvent event) {
         int counter;
         String userEmail = (String) event.getAuthentication().getPrincipal();
         if ("access-token".contentEquals(userEmail)) {
-            System.out.println("invalid access token");
+            LOGGER.debug("Invalid Access token");
             return;
         }
-        System.out.println(userEmail+"----");
+        LOGGER.debug("------{}",userEmail);
         Optional<UserLoginFailCounter> userLoginFailCounter = userLoginFailCounterRepo.findByEmail(userEmail);
 
         if (!userLoginFailCounter.isPresent()) {
@@ -44,7 +46,7 @@ public class UserLoginEventListener {
         }
         if (userLoginFailCounter.isPresent()) {
             counter = userLoginFailCounter.get().getAttempts();
-            System.out.println(counter);
+            LOGGER.debug("{}",counter);
             if (counter>=2) {
                 User user = userRepo.findByEmail(userEmail);
                 user.setLocked(true);
@@ -54,7 +56,7 @@ public class UserLoginEventListener {
             UserLoginFailCounter userLoginFailCounter1 = userLoginFailCounter.get();
             userLoginFailCounter1.setAttempts(++counter);
             userLoginFailCounter1.setEmail(userEmail);
-            System.out.println(userLoginFailCounter1+"-----------------");
+            LOGGER.debug("--------{}",userLoginFailCounter1);
             userLoginFailCounterRepo.save(userLoginFailCounter1);
         }
 
@@ -72,6 +74,7 @@ public class UserLoginEventListener {
         try {
             userEmail = userMap.get("username");
         } catch (NullPointerException e) {
+            LOGGER.debug("User has successfully login");
         }
         Optional<UserLoginFailCounter> userLoginFailCounter = userLoginFailCounterRepo.findByEmail(userEmail);
         if (userLoginFailCounter.isPresent()){

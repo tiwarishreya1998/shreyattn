@@ -3,7 +3,7 @@ package com.bootcamp.shoppingApp.dto;
 import java.util.HashMap;
 import java.util.HashSet;
 
-public class CategoryMetaDataDto {
+public class CategoryMetadataDto {
     private Long categoryId;
     private HashMap<String, HashSet<String>> filedIdValues;
 
@@ -25,7 +25,7 @@ public class CategoryMetaDataDto {
 
     @Override
     public String toString() {
-        return "CategoryMetaDataDto{" +
+        return "CategoryMetadataDto{" +
                 "categoryId=" + categoryId +
                 ", filedIdValues=" + filedIdValues +
                 '}';

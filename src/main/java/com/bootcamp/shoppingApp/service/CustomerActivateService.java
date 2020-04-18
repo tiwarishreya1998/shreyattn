@@ -27,10 +27,8 @@ public class CustomerActivateService {
     @Transactional
     public String activateCustomer( String token) {
         CustomerActivate customerActivate = customerActivateRepo.findByToken(token);
-        try {
-            if (customerActivate.getToken().equals(null)) {
-            }
-        } catch (NullPointerException ex) {
+
+        if(customerActivate==null){
             return "invalid token";
         }
 

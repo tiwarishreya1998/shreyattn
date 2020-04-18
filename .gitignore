@@ -4,9 +4,8 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**
 !**/src/test/**
-application.log
-application.log.2020-04-16.0.gz
-application.log.2020-04-17.0.gz
+application.log.*
+
 
 ### STS ###
 .apt_generated

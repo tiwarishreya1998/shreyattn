@@ -36,6 +36,7 @@ public class CustomerProfileService {
     private SendEmail sendEmail;
     @Autowired
     private AddressRepository addressRepository;
+
     public Customer viewProfile(HttpServletRequest request) {
         String customerEmail = userEmailFromToken.getUserEmail(request);//request passed to get header to get email
         Customer customer = customerRepo.findByEmail(customerEmail);
@@ -62,8 +63,9 @@ public class CustomerProfileService {
                 //to do -> check image format then update image
             }
         } catch (NullPointerException ex) {
+            ex.printStackTrace();
         }
-//@DynamicUpdate
+
         customerRepo.save(customer);
         return "Success";
     }

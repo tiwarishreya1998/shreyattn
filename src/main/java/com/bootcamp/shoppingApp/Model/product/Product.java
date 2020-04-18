@@ -3,6 +3,7 @@ package com.bootcamp.shoppingApp.Model.product;
 import com.bootcamp.shoppingApp.Model.categoryPack.Category;
 import com.bootcamp.shoppingApp.Model.user.Seller;
 import com.bootcamp.shoppingApp.Model.utilPack.AuditingInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -102,6 +103,7 @@ public class Product {
         isActive = active;
     }
 
+    @JsonIgnore
     public AuditingInfo getAuditingInfo() {
         return auditingInfo;
     }
@@ -130,6 +132,7 @@ public class Product {
         return productVariations;
     }
 
+    @JsonIgnore
     public void setProductVariations(Set<ProductVariation> productVariations) {
         this.productVariations = productVariations;
     }

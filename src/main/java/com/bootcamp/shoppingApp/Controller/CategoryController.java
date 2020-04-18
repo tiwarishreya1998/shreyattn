@@ -53,7 +53,7 @@ public class CategoryController {
         return getMessage;
     }
     @GetMapping("{id}")
-    public CategoryDto viewCategory(@PathVariable Long id){
+    public CategoryDto viewCategory(@PathVariable Long id) {
         return categoryService.viewCategory(id);
     }
 
@@ -61,5 +61,6 @@ public class CategoryController {
     public List<CategoryDto> viewCategories(@RequestParam(defaultValue = "0") String page, @RequestParam(defaultValue = "10") String size, @RequestParam(defaultValue = "id") String SortBy, @RequestParam(defaultValue = "ASC") String order, @RequestParam Optional<String> query) {
         return categoryService.viewCategories(page,size,SortBy,order,query);
     }
+
 
 }

@@ -3,7 +3,7 @@ package com.bootcamp.shoppingApp.Model.categoryPack;
 import javax.persistence.*;
 
 @Entity
-public class CategoryMetaDataFieldValues {
+public class CategoryMetadataFieldValues {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -15,7 +15,7 @@ public class CategoryMetaDataFieldValues {
 
     @ManyToOne
     @JoinColumn(name = "category_metadata_field_id")
-    private CategoryMetaDataField categoryMetaDataField;
+    private CategoryMetadataField categoryMetadataField;
 
     private String value;
 
@@ -43,11 +43,11 @@ public class CategoryMetaDataFieldValues {
         this.category = category;
     }
 
-    public CategoryMetaDataField getCategoryMetaDataField() {
-        return categoryMetaDataField;
+    public CategoryMetadataField getCategoryMetadataField() {
+        return categoryMetadataField;
     }
 
-    public void setCategoryMetaDataField(CategoryMetaDataField categoryMetaDataField) {
-        this.categoryMetaDataField = categoryMetaDataField;
+    public void setCategoryMetadataField(CategoryMetadataField categoryMetadataField) {
+        this.categoryMetadataField = categoryMetadataField;
     }
 }

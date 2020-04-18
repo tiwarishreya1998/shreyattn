@@ -7,43 +7,27 @@ import javax.persistence.*;
 
 @Entity
 public class Cart {
-
-    @EmbeddedId
-    private CustomerProductVariationId customerProductVariationId;
-
-    @OneToOne
-    @JoinColumn(name = "customer_user_id",updatable = false,insertable=false)
-    private Customer customer;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
 
     private Integer quantity;
     private Boolean isWishListItem;
+
+    @OneToOne
+    @JoinColumn(name = "customer_user_id",updatable = false,insertable = false)
+    private Customer customer;
 
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "product_variation_id",updatable = false,insertable = false)
     private ProductVariation productVariation;
 
-    public ProductVariation getProductVariation() {
-        return productVariation;
+    public Long getId() {
+        return id;
     }
 
-    public void setProductVariation(ProductVariation productVariation) {
-        this.productVariation = productVariation;
-    }
-
-    public CustomerProductVariationId getCustomerProductVariationId() {
-        return customerProductVariationId;
-    }
-
-    public void setCustomerProductVariationId(CustomerProductVariationId customerProductVariationId) {
-        this.customerProductVariationId = customerProductVariationId;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Integer getQuantity() {
@@ -60,5 +44,21 @@ public class Cart {
 
     public void setWishListItem(Boolean wishListItem) {
         isWishListItem = wishListItem;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public ProductVariation getProductVariation() {
+        return productVariation;
+    }
+
+    public void setProductVariation(ProductVariation productVariation) {
+        this.productVariation = productVariation;
     }
 }

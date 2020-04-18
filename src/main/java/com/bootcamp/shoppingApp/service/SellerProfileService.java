@@ -42,6 +42,7 @@ public class SellerProfileService {
         Seller seller=sellerRepository.findByEmail(sellerEmail);
         SellerProfileDto sellerProfileDto=modelMapper.map(seller,SellerProfileDto.class);
         sellerProfileDto.setImage("image");
+
         Set<Address> addresses=seller.getAddresses();
         SellerAddressDto sellerAddressDto=modelMapper.map(addresses.stream().findFirst().get(),SellerAddressDto.class);
         sellerProfileDto.setAddress(sellerAddressDto);
@@ -69,7 +70,7 @@ public class SellerProfileService {
                         return "company contact should be unique";
                     }
                 } catch (NullPointerException ex) {
-
+                    ex.printStackTrace();
                 }
                 seller.setCompanyContact(sellerProfileDto.getCompanyContact());
             }
@@ -90,7 +91,9 @@ public class SellerProfileService {
             if (sellerProfileDto.getImage() != null) {
                 // check image format and then update
             }
-        } catch (NullPointerException ex) {}
+        } catch (NullPointerException ex) {
+            return "There might be some important missing values";
+        }
 
         sellerRepository.save(seller);
         return "Success";

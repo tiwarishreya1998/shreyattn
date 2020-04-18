@@ -1,7 +1,7 @@
 package com.bootcamp.shoppingApp.Controller;
 
-import com.bootcamp.shoppingApp.dto.CategoryMetaDataDto;
-import com.bootcamp.shoppingApp.service.CategoryMetaDataService;
+import com.bootcamp.shoppingApp.dto.CategoryMetadataDto;
+import com.bootcamp.shoppingApp.service.CategoryMetadataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,11 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 public class CategoryMetadataController {
 
     @Autowired
-    private CategoryMetaDataService categoryMetaDataService;
+    private CategoryMetadataService categoryMetadataService;
 
     @PostMapping("/add")
-    public String addCategoryMetaData(@RequestBody CategoryMetaDataDto categoryMetaDataDto, HttpServletResponse response){
-        String getMessage=categoryMetaDataService.addCategoryMetadata(categoryMetaDataDto);
+    public String addCategoryMetadata(@RequestBody CategoryMetadataDto categoryMetadataDto, HttpServletResponse response){
+        String getMessage=categoryMetadataService.addCategoryMetadata(categoryMetadataDto);
         if ("Success".contentEquals(getMessage)) {
             response.setStatus(HttpServletResponse.SC_CREATED);
         } else {
@@ -29,8 +29,8 @@ public class CategoryMetadataController {
     }
 
     @PostMapping("/update")
-    public String updateCategoryMetaData(@RequestBody CategoryMetaDataDto categoryMetaDataDto,HttpServletResponse response){
-        String getMessage=categoryMetaDataService.updateCategory(categoryMetaDataDto);
+    public String updateCategoryMetadata(@RequestBody CategoryMetadataDto categoryMetadataDto, HttpServletResponse response){
+        String getMessage=categoryMetadataService.updateCategory(categoryMetadataDto);
         if ("Success".contentEquals(getMessage)) {
             response.setStatus(HttpServletResponse.SC_CREATED);
         } else {

@@ -39,7 +39,7 @@ public class UserRegistrationService {
         }
 
         catch(NullPointerException ex){
-
+            ex.printStackTrace();
         }
 
         boolean isPasswordValid=ValidPassword.isValidPassword(customer.getPassword());
@@ -98,7 +98,7 @@ public class UserRegistrationService {
             }
             }
             catch (NullPointerException ex){
-
+                ex.printStackTrace();
             }
 
             Seller seller1=sellerRepository.findByCompanyName(seller.getCompanyName());
@@ -108,7 +108,7 @@ public class UserRegistrationService {
                 }
             }
             catch(NullPointerException ex){
-
+                ex.printStackTrace();
             }
 
         List<Seller> sellers=sellerRepository.findByGst(seller.getGst());
@@ -127,7 +127,7 @@ public class UserRegistrationService {
                 }
             }
             catch(NullPointerException ex){
-
+                ex.printStackTrace();
             }
             boolean isValidPassword=ValidPassword.isValidPassword(seller.getPassword());
             if(!isValidPassword){
