@@ -1,7 +1,9 @@
 package com.bootcamp.shoppingApp.Controller;
 
+import com.bootcamp.shoppingApp.Model.categoryPack.Category;
 import com.bootcamp.shoppingApp.dto.AddressDto;
 import com.bootcamp.shoppingApp.dto.CustomerProfileDto;
+import com.bootcamp.shoppingApp.service.CategoryService;
 import com.bootcamp.shoppingApp.service.CustomerProfileService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @RestController
@@ -19,11 +23,13 @@ public class CustomerProfileController {
     private CustomerProfileService customerProfileService;
     @Autowired
     ModelMapper modelMapper;
+    @Autowired
+    private CategoryService categoryService;
 
     @GetMapping("")
 
     public CustomerProfileDto viewProfile(HttpServletRequest request) {
-        CustomerProfileDto customerProfileDTO = modelMapper.map(customerProfileService.viewProfile(request),CustomerProfileDto.class);//gettin obj of customer and is converted into customer dta... adn additionally do for image
+        CustomerProfileDto customerProfileDTO = modelMapper.map(customerProfileService.viewProfile(request),CustomerProfileDto.class);
         // check image format then set
         customerProfileDTO.setImage("image");
         return customerProfileDTO;
@@ -87,5 +93,11 @@ public class CustomerProfileController {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
         return getMessage;
+    }
+
+
+    @GetMapping("/categories")
+    public List<Category> viewLeafCategories(@RequestParam Optional<Long> categoryId) {
+        return categoryService.viewCategoriesSameParent(categoryId);
     }
 }

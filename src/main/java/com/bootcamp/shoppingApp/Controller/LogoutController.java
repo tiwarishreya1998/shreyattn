@@ -23,20 +23,4 @@ public class LogoutController {
         }
         return "Logged out successfully";
     }
-
-    @GetMapping("/")
-    public String index() {
-        return "index";
-    }
-
-    @GetMapping("/admin/home")
-    public String adminHome() {
-        return "Admin home";
-    }
-
-    @GetMapping("/user/home")
-    public String userHome() {
-        return "User home";
-    }
-
 }

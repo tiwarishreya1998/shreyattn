@@ -3,7 +3,6 @@ package com.bootcamp.shoppingApp.Model.product;
 import com.bootcamp.shoppingApp.Model.categoryPack.Category;
 import com.bootcamp.shoppingApp.Model.user.Seller;
 import com.bootcamp.shoppingApp.Model.utilPack.AuditingInfo;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -17,11 +16,18 @@ public class Product {
     private String name;
     private String description;
     private Boolean isCancellable;
-    @JsonProperty
-    private Boolean isReturnable=false;
+    private Boolean isReturnable;
     private String brand;
     private  Boolean isActive;
+    private Boolean isDeleted;
 
+    public Boolean getDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        isDeleted = deleted;
+    }
 
     @Embedded
     private AuditingInfo auditingInfo;

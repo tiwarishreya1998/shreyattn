@@ -20,7 +20,7 @@ public class ProductVariation {
     private Product  product;
 
     @Convert(converter = HashMapConverter.class)//to store meta data as json in db
-    private Map<String,Object>metadata;
+    private Map<String,String>metadata;
 
     public Long getId() {
         return id;
@@ -70,11 +70,11 @@ public class ProductVariation {
         this.product = product;
     }
 
-    public Map<String, Object> getMetadata() {
+    public Map<String,String> getMetadata() {
         return metadata;
     }
 
-    public void setMetadata(Map<String, Object> metadata) {
+    public void setMetadata(Map<String,String> metadata) {
         this.metadata = metadata;
     }
 }

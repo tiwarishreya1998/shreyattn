@@ -1,10 +1,12 @@
 package com.bootcamp.shoppingApp.Controller;
 
+import com.bootcamp.shoppingApp.dto.CategoryDto;
 import com.bootcamp.shoppingApp.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -27,7 +29,7 @@ public class CategoryController {
     }
 
     @DeleteMapping("/delete")
-    public String deleteCategory(@RequestParam Long id,HttpServletResponse response){
+    public String deleteCategory(@RequestParam Long id, HttpServletResponse response){
         String getMessage=categoryService.deleteCategory(id);
         if("Success".contentEquals(getMessage)){
             response.setStatus(HttpServletResponse.SC_CREATED);
@@ -49,6 +51,15 @@ public class CategoryController {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
         return getMessage;
+    }
+    @GetMapping("{id}")
+    public CategoryDto viewCategory(@PathVariable Long id){
+        return categoryService.viewCategory(id);
+    }
+
+    @GetMapping("/all")
+    public List<CategoryDto> viewCategories(@RequestParam(defaultValue = "0") String page, @RequestParam(defaultValue = "10") String size, @RequestParam(defaultValue = "id") String SortBy, @RequestParam(defaultValue = "ASC") String order, @RequestParam Optional<String> query) {
+        return categoryService.viewCategories(page,size,SortBy,order,query);
     }
 
 }

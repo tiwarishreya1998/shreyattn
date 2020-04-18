@@ -152,7 +152,7 @@ public class UserRegistrationService {
 
             Set<Address> address=seller.getAddresses();
             address.forEach(address1 -> {
-                Address address2=address1;
+            Address address2=address1;
             address2.setUser(seller);});
 
             userRepository.save(seller);

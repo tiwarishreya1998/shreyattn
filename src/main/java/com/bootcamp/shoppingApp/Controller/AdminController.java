@@ -10,6 +10,8 @@ import com.bootcamp.shoppingApp.utils.SendEmail;
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -36,6 +38,7 @@ public class AdminController {
     @Autowired
     private SellerRepository sellerRepository;
 
+    private static final Logger LOGGER= LoggerFactory.getLogger(AdminController.class);
 
     @PatchMapping("/admin/activate/customers/{id}")
     public String activateCustomer(@PathVariable Long id, HttpServletResponse httpServletResponse) {
@@ -52,7 +55,7 @@ public class AdminController {
         }
 
         userRepository.save(user.get());
-        System.out.println("Already Activated");
+        LOGGER.debug("Already Activated");
         return "Success";
     }
 
@@ -72,7 +75,7 @@ public class AdminController {
             return "Success";
         }
         userRepository.save(user.get());
-        System.out.println("Account is already deactivated");
+        LOGGER.debug("Account is already deactivated");
         return "Success";
 
     }
@@ -92,7 +95,7 @@ public class AdminController {
             return "Success";
         }
         userRepository.save(user.get());
-        System.out.println("Already activated");
+        LOGGER.debug("Already activated");
         return "Success";
     }
 
@@ -111,7 +114,7 @@ public class AdminController {
             return "Success";
         }
         userRepository.save(user.get());
-        System.out.println("Already deactivated");
+        LOGGER.debug("Already deactivation");
         return "Success";
     }
 

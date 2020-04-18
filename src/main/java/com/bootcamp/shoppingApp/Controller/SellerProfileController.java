@@ -1,7 +1,9 @@
 package com.bootcamp.shoppingApp.Controller;
 
+import com.bootcamp.shoppingApp.dto.CategoryDto;
 import com.bootcamp.shoppingApp.dto.SellerAddressDto;
 import com.bootcamp.shoppingApp.dto.SellerProfileDto;
+import com.bootcamp.shoppingApp.service.CategoryService;
 import com.bootcamp.shoppingApp.service.SellerProfileService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+
 @RestController
 @RequestMapping("/seller/profile")
 public class SellerProfileController {
@@ -16,7 +20,9 @@ public class SellerProfileController {
     SellerProfileService sellerProfileService;
 
     @Autowired
-    ModelMapper modelMapper;
+    private ModelMapper modelMapper;
+    @Autowired
+    private CategoryService categoryService;
 
     @GetMapping("")
     public SellerProfileDto viewProfile(HttpServletRequest request) {
@@ -54,5 +60,10 @@ public class SellerProfileController {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
         }
         return getMessage;
+    }
+
+    @GetMapping("/categories")
+    public List<CategoryDto> viewLeafCategories() {
+        return categoryService.viewLeafCategories();
     }
 }

@@ -1,6 +1,8 @@
 package com.bootcamp.shoppingApp.security;
 
 import com.bootcamp.shoppingApp.utils.ValidEmail;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -19,6 +21,7 @@ public class AppUserDetailsService implements UserDetailsService {
     private UserDao userDao;
 
 
+    private static final Logger LOGGER= LoggerFactory.getLogger(AppUserDetailsService.class);
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {//when security comes into action spring security finds this method..
@@ -28,8 +31,9 @@ public class AppUserDetailsService implements UserDetailsService {
         }
         String encryptedPassword=passwordEncoder.encode("pass");
         System.out.println("Trying to authenticate user: "+email);
+        LOGGER.debug("Trying ti authenticate user: ",email);
 
-        System.out.println("Encrypted password :: "+encryptedPassword);
+        LOGGER.debug("Encrypted Password : ",encryptedPassword);
 
         UserDetails userDetails=userDao.loadUserByEmail(email);
         return userDetails;

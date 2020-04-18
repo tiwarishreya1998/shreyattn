@@ -1,14 +1,13 @@
 package com.bootcamp.shoppingApp.security;
 
-import com.bootcamp.shoppingApp.Model.categoryPack.Category;
-import com.bootcamp.shoppingApp.Model.product.Product;
-import com.bootcamp.shoppingApp.Model.product.ProductVariation;
 import com.bootcamp.shoppingApp.Model.user.Admin;
 import com.bootcamp.shoppingApp.Model.user.Role;
 import com.bootcamp.shoppingApp.repository.CategoryRepository;
 import com.bootcamp.shoppingApp.repository.ProductRepository;
 import com.bootcamp.shoppingApp.repository.ProductVariationRepo;
 import com.bootcamp.shoppingApp.repository.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -16,7 +15,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import java.util.*;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Component
 public class Bootstrap implements ApplicationRunner {
@@ -29,6 +30,8 @@ public class Bootstrap implements ApplicationRunner {
     private CategoryRepository categoryRepository;
     @Autowired
     private ProductVariationRepo productVariationRepo;
+    private static final Logger LOGGER= LoggerFactory.getLogger(Bootstrap.class);
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
         if (userRepository.count()<1){
@@ -59,33 +62,9 @@ public class Bootstrap implements ApplicationRunner {
             shreya.setRoles(roleSet);
 
             userRepository.save(shreya);
-            System.out.println("Total users saved");
+            LOGGER.debug("Total user saved");
 
         }
-        if(productRepository.count()<1)
-        {
-            Product product=new Product();
-            Category category=new Category();;
-            category.setName("FootWear");
-            category.setParentId(category);
-            categoryRepository.save(category);
-            product.setCategory(category);
-            product.setActive(true);
-            product.setDescription("Footwear is very good");
-            product.setBrand("Adidas");
-            productRepository.save(product);
 
-            if (productVariationRepo.count()<1){
-                ProductVariation productVariation=new ProductVariation();
-                productVariation.setPrice(100L);
-                productVariation.setQuantityAvailable(90L);
-                productVariation.setProduct(product);
-                Map<String,Object> map=new HashMap<>();
-                map.put("Colour",new String("red"));
-                productVariation.setMetadata(map);
-                productVariationRepo.save(productVariation);
-            }
-            System.out.println("total product save  "+productRepository.count());
-        }
     }
 }

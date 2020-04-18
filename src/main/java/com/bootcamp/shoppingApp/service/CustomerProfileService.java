@@ -50,6 +50,7 @@ public class CustomerProfileService {
         try {
             if (!(customerProfileDto.getFirstName()  == null)){
                 customer.setFirstName(customerProfileDto.getFirstName());
+                customer.setCreatedBy(customerProfileDto.getFirstName());
             }
             if (!(customerProfileDto.getLastName() == null)){
                 customer.setLastName(customerProfileDto.getLastName());
