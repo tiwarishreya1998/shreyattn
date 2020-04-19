@@ -3,10 +3,7 @@ package com.bootcamp.shoppingApp.Controller;
 import com.bootcamp.shoppingApp.dto.CategoryMetadataDto;
 import com.bootcamp.shoppingApp.service.CategoryMetadataService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -28,7 +25,7 @@ public class CategoryMetadataController {
         return getMessage;
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public String updateCategoryMetadata(@RequestBody CategoryMetadataDto categoryMetadataDto, HttpServletResponse response){
         String getMessage=categoryMetadataService.updateCategory(categoryMetadataDto);
         if ("Success".contentEquals(getMessage)) {

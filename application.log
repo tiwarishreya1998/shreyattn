@@ -1653,3 +1653,8 @@ Identify and stop the process that's listening on port 8080 or configure this ap
 2020-04-19 23:11:51.533  INFO 27936 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
 2020-04-19 23:11:51.584  INFO 27936 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
 2020-04-19 23:11:51.585  INFO 27936 --- [main] c.b.shoppingApp.ShoppingAppApplication   : Started ShoppingAppApplication in 5.748 seconds (JVM running for 6.117)
+2020-04-19 23:35:42.497  INFO 27936 --- [SpringContextShutdownHook] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
+2020-04-19 23:35:42.499  INFO 27936 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-04-19 23:35:42.505  INFO 27936 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-04-19 23:35:42.507  INFO 27936 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-04-19 23:35:42.517  INFO 27936 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
