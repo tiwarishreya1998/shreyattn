@@ -16,7 +16,7 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @PostMapping("/product")
+    @PostMapping("/add")
     public String addProduct(@RequestParam("name") String name, @RequestParam("brand") String brand, @RequestParam("categoryId") Long categoryId, @RequestParam("desc") Optional<String> desc, @RequestParam(name = "isCancellable") Optional<Boolean> isCancellable, @RequestParam(name = "isReturnable") Optional<Boolean> isReturnable, HttpServletResponse response, HttpServletRequest request) {
         String getMessage = productService.addProduct(request,name,brand,categoryId,desc,isCancellable,isReturnable);
         if ("Success".contentEquals(getMessage)) {
