@@ -37,6 +37,7 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category category;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "seller_user_id")
     private Seller seller;
@@ -145,21 +146,5 @@ public class Product {
         this.productReviews = productReviews;
     }
 
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", isCancellable=" + isCancellable +
-                ", isReturnable=" + isReturnable +
-                ", brand='" + brand + '\'' +
-                ", isActive=" + isActive +
-                ", auditingInfo=" + auditingInfo +
-                ", category=" + category +
-                ", seller=" + seller +
-                ", productVariations=" + productVariations +
-                ", productReviews=" + productReviews +
-                '}';
     }
-}
+

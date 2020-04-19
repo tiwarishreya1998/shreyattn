@@ -38,7 +38,7 @@ public class CustomerProfileService {
     private AddressRepository addressRepository;
 
     public Customer viewProfile(HttpServletRequest request) {
-        String customerEmail = userEmailFromToken.getUserEmail(request);//request passed to get header to get email
+        String customerEmail = userEmailFromToken.getUserEmail(request);
         Customer customer = customerRepo.findByEmail(customerEmail);
         return customer;
     }

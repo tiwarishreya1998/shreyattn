@@ -1,11 +1,9 @@
 package com.bootcamp.shoppingApp.Model.user;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import javax.persistence.*;
-import javax.validation.constraints.Pattern;
-import java.util.Date;
 
+import javax.persistence.*;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -18,7 +16,6 @@ public class User {
     private String firstName;
     private String middleName;
     private String lastName;
-    @Pattern(regexp = "[a-zA-Z][a-zA-Z0-9_.]*@[a-zA-Z]+[.][a-zA-Z]+", message = "Invalid Email Format")
     private String email;
     private String password;
     private boolean isActive;
@@ -94,7 +91,7 @@ public class User {
         isActive = active;
     }
 
-    @JsonIgnore
+
     public boolean isDeleted() {
         return isDeleted;
     }//do not want to show user this.
@@ -103,7 +100,7 @@ public class User {
         isDeleted = deleted;
     }
 
-    @JsonIgnore
+
     public boolean isPasswordExpired() {
         return isPasswordExpired;
     }
@@ -112,7 +109,7 @@ public class User {
         isPasswordExpired = passwordExpired;
     }
 
-    @JsonIgnore
+
     public boolean isLocked() {
         return isLocked;
     }

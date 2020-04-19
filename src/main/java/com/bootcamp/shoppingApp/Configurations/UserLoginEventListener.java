@@ -68,7 +68,7 @@ public class UserLoginEventListener {
         try {
             userMap = (LinkedHashMap<String, String>) event.getAuthentication().getDetails();
         } catch (ClassCastException ex) {
-
+            ex.printStackTrace();
         }
         String userEmail = new String();
         try {

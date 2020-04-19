@@ -24,10 +24,10 @@ public class AppUserDetailsService implements UserDetailsService {
     private static final Logger LOGGER= LoggerFactory.getLogger(AppUserDetailsService.class);
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {//when security comes into action spring security finds this method..
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         boolean isValid=ValidEmail.checkEmailValid(email);
         if (!isValid){
-            throw new RuntimeException("Email not valid");//response will go to postman that email is not valid.
+            throw new RuntimeException("Email not valid");
         }
         String encryptedPassword=passwordEncoder.encode("pass");
 

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class EmailConfig {
-    @Value("${spring.mail.host}")  //
+    @Value("${spring.mail.host}")
     private String host;
 
     @Value("${spring.mail.port}")
