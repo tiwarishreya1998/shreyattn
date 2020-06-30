@@ -1,0 +1,146 @@
+package com.bootcamp.shoppingApp.Controller;
+
+import com.bootcamp.shoppingApp.Model.user.Customer;
+import com.bootcamp.shoppingApp.Model.user.Seller;
+import com.bootcamp.shoppingApp.Model.user.User;
+import com.bootcamp.shoppingApp.repository.CustomerRepo;
+import com.bootcamp.shoppingApp.repository.SellerRepository;
+import com.bootcamp.shoppingApp.repository.UserRepository;
+import com.bootcamp.shoppingApp.utils.SendEmail;
+import com.fasterxml.jackson.databind.ser.FilterProvider;
+import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
+import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.http.converter.json.MappingJacksonValue;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+import java.util.Optional;
+
+
+@RestController
+public class AdminController {
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private SendEmail sendEmail;
+
+    @Autowired
+    private CustomerRepo customerRepo;
+
+    @Autowired
+    private SellerRepository sellerRepository;
+
+    private static final Logger LOGGER= LoggerFactory.getLogger(AdminController.class);
+
+    @PatchMapping("/admin/activate/customers/{id}")
+    public String activateCustomer(@PathVariable Long id, HttpServletResponse httpServletResponse) {
+        Optional<User> user = userRepository.findById(id);
+        if (!user.isPresent()) {
+            httpServletResponse.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            return "No user of this id is present";
+        }
+        if (!user.get().isActive()) {
+            user.get().setActive(true);
+            userRepository.save(user.get());
+            sendEmail.sendEmail("Activated", "Your account has been activated", user.get().getEmail());
+            return "Success";
+        }
+
+        userRepository.save(user.get());
+        LOGGER.debug("Already Activated");
+        return "Success";
+    }
+
+    @PatchMapping("/admin/deactivate/customer/{id}")
+    public String deactivateCustomer(@PathVariable Long id, HttpServletResponse httpServletResponse) {
+        Optional<User> user = userRepository.findById(id);
+        if (!user.isPresent()) {
+            httpServletResponse.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            return "No user found of this id";
+
+        }
+        if (user.get().isActive()) {
+            user.get().setActive(false);
+            userRepository.save(user.get());
+
+            sendEmail.sendEmail("Deactivate Account", "your account has been Deactivated", user.get().getEmail());
+            return "Success";
+        }
+        userRepository.save(user.get());
+        LOGGER.debug("Account is already deactivated");
+        return "Success";
+
+    }
+
+    @PatchMapping("/admin/activate/seller/{id}")
+    public String activateSeller(@PathVariable Long id, HttpServletResponse httpServletResponse) {
+        Optional<User> user = userRepository.findById(id);
+        if (!user.isPresent()) {
+            httpServletResponse.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            return "No user is found of this id";
+        }
+        if (!user.get().isActive()) {
+            user.get().setActive(true);
+            userRepository.save(user.get());
+
+            sendEmail.sendEmail("Activate seller", "Your account is activated", user.get().getEmail());
+            return "Success";
+        }
+        userRepository.save(user.get());
+        LOGGER.debug("Already activated");
+        return "Success";
+    }
+
+    @PatchMapping("/admin/deactivate/seller/{id}")
+    public String deactivateSeller(@PathVariable Long id,HttpServletResponse httpServletResponse){
+        Optional<User> user=userRepository.findById(id);
+        if(!user.isPresent()){
+            httpServletResponse.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            return "No user found with this id";
+        }
+        if (user.get().isActive()){
+            user.get().setActive(false);
+            userRepository.save(user.get());
+            sendEmail.sendEmail("Deactivate account","Your account has been deactivated",user.get().getEmail());
+
+            return "Success";
+        }
+        userRepository.save(user.get());
+        LOGGER.debug("Already deactivation");
+        return "Success";
+    }
+
+
+    @GetMapping("/admin/customer")
+    public MappingJacksonValue getCustomer(@RequestParam(defaultValue = "0")String page,@RequestParam(defaultValue = "10")String size,@RequestParam(defaultValue = "id")String SortBy){
+        List<Customer> customersList=customerRepo.findAll(PageRequest.of(Integer.parseInt(page),Integer.parseInt(size), Sort.by(SortBy)));
+        SimpleBeanPropertyFilter filter=SimpleBeanPropertyFilter.filterOutAllExcept("id","firstName","middleName","lastName","email","active");
+        FilterProvider filterProvider=new SimpleFilterProvider().addFilter("ignoreAddressInCustomer",filter);
+        MappingJacksonValue mappingJacksonValue=new MappingJacksonValue(customersList);
+        mappingJacksonValue.setFilters(filterProvider);
+
+        return mappingJacksonValue;
+
+    }
+
+    @GetMapping("/admin/seller")
+    public MappingJacksonValue getSeller(@RequestParam(defaultValue = "0")String page,@RequestParam(defaultValue = "10") String size,@RequestParam(defaultValue = "id")String SortBy)
+    {
+        List<Seller> sellers=sellerRepository.findAll(PageRequest.of(Integer.parseInt(page),Integer.parseInt(size),Sort.by(SortBy)));
+        SimpleBeanPropertyFilter filter=SimpleBeanPropertyFilter.filterOutAllExcept("id","firstName","middleName","lastName","email","active","addresses","companyName","companyContact");
+        FilterProvider filterProvider=new SimpleFilterProvider().addFilter("ignoreAddressInCustomer",filter);
+        MappingJacksonValue mappingJacksonValue=new MappingJacksonValue(sellers);
+        mappingJacksonValue.setFilters(filterProvider);
+        return  mappingJacksonValue;
+
+    }
+
+}
